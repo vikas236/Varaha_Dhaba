@@ -305,11 +305,12 @@ section ul {
     bottom: -75px;
     left: 50%;
     transform: translate(-50%);
+    background: white;
 }
 .media i {
     color: #efc337;
     position: relative;
-    right: 100px;
+    left: 0px;
 }
 .end {
     width: 100px;
