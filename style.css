@@ -22,6 +22,7 @@ body {
 }
 a {
     text-decoration: none;
+    transition: .6s;
 }
 ul {
     list-style: none;
@@ -149,7 +150,7 @@ section ul {
     width: 80%;
     margin-top: 0px;
     position: relative;
-    left: 35px;
+    left: 8%;
 }
 .main h2 {
     color: #efc337; 
@@ -310,6 +311,49 @@ section ul {
     color: #efc337;
     position: relative;
     left: 0px;
+}
+.cart {
+    width: 100vw;
+    height: 30%;
+    background: #efc337;
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    border-radius: 25px 25px 0 0;
+    /* transform: translateY(300px); */
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-top: 1px solid #92140C;
+}
+.cart li {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+.cart li i {
+    margin-left: 100px;
+    margin-right: 10px;
+    transform: translateY(5px);
+    cursor: pointer;
+}
+.cart .order {
+    width: 350px;
+    height: 40px;
+    background: #92140C;
+    text-align: center;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 5px;
+    cursor: pointer;
+}
+.cart .order:hover {
+    background: black;
+}
+.cart .order h1 {
+    font-size: 20px;
+    margin-top: 7px;
 }
 .end {
     width: 100px;
