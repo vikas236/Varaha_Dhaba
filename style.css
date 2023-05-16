@@ -309,6 +309,8 @@ section ul {
 }
 .media i {
     color: #efc337;
+    position: relative;
+    left: 0%;
 }
 .end {
     width: 100px;
