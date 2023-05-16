@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+body {
+    background-color: #0B1517;
+    /* background-color: #880B05; */
+    color: #FFF8F0;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+    position: relative;
+}
+section ul {
+    margin-top: 0px;
+}
+.navbar {
+    height: 85px;
+    width: 100%;
+    background-color: transparent;
+    color: #D00300;
+    backdrop-filter: blur(3px);
+    position: fixed;
+    z-index: 4;
+}
+.navbar .title {
+    inset: 25px;
+}
+.title {
+    font-size: 25px;
+    position: absolute;
+    cursor: pointer;
+}
+.nav li {
+    color: #efc337;
+}
+.ham {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border-radius: 50%;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+    z-index: 5;
+    transition: .5s;
+}
+.ham .strip, .ham .strip::before, .strip::after {
+    width: 25px;
+    height: 4px;
+    background-color: #FFF8F0;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 3;
+    transition: .5s;
+}
+.ham .strip {
+    top: 20px;
+    left: 12px;
+}
+.strip::before, .strip::after {
+    content: "";
+    display: inline-block;
+}
+.strip::before {
+    top: 8px; 
+}
+.strip::after {
+    top: -8px;
+}
+.ham.active .strip {
+    transform: rotate(315deg);
+}
+.ham.active .strip::before {
+    transform: rotate(90deg);
+    top: 0px;
+}
+.ham.active .strip::after {
+    top: 0px;
+}
+.s_bar {
+    width: 250px;
+    height: 100vh;
+    background: #FFF8F0;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    transform: translateX(250px);
+    transition: .5s;
+    z-index: 4;
+    background: #0B1517;
+    border-left: 1px solid black;
+}
+.s_bar.active {
+    transform: translateX(0px);
+    z-index: 4;
+}
+.s_bar ul {
+    margin: 50px 25px;
+}
+.nav ul li {
+    margin: 20px 0;
+}
+.nav li a {
+    color: #efc337;
+    text-decoration: none;
+    font-size: 27px;;
+    transition: .5s;
+}
+.nav li a:hover {
+    color: #92140C;
+}
+.main {
+    background: #0B1517;
+    /* background-color: #880B05; */
+    position: relative;
+    top: 85px;
+    z-index: 0;
+}
+.main h1 {
+    font-size: 35px;
+    color: #efc337;
+    text-align: center;
+    border: 1px solid #efc337;
+    border-left: 0;
+    border-right: 0;
+    padding: 10px 0;
+    margin: 25px 60px;
+    margin-top: 0px;
+    border-radius: 3px;
+}
+.main > div {
+    width: 80%;
+    margin-top: 0px;
+    position: relative;
+    left: 35px;
+}
+.main h2 {
+    color: #efc337; 
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1em;
+    height: 35px;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    padding: 0 3px;
+    transition: .5s;
+    position: relative;
+}
+.main .container {
+    transition: .5s;
+    height: 0px;
+}
+.main .short .container {
+    margin-top: 5px;
+    overflow-y: hidden;
+    transition: .5s;
+}
+.main h2.extra {
+    margin-bottom: 30px;
+}
+.main h2::after, .main h2.extra::after {
+    content: "";
+    width: 250px;
+    height: 25px;
+    background: #92140C;
+    display: inline-block;
+    position: absolute;
+    z-index: -1;
+}
+.main h2::after {    
+    inset: 0px -50px;
+}
+.main h2.extra::after {
+    height: 50px;
+}
+.main h2::before {
+    content: "";
+    width: 85px;
+    height: 35px;
+    background: #0B1517;
+    display: inline-block;
+    position: absolute;
+    z-index: 0;
+    transform: rotate(60deg);
+    inset: 10px 155px;
+}
+.main li {
+    font-size: 18px;
+    line-height: .9em;
+    position: relative;
+    cursor: pointer;
+}
+.main i {
+    position: absolute;
+    right: 50px;
+    color: #efc337;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1;
+    transition: .6s;
+}
+.main i:hover {
+    transform: scale(1.1);
+}
+.main li span, .main h2 span {
+    width: 100%;
+    text-align: end;
+    display: inline-block;
+    transform: translateY(-14px);
+}
+.main h2 span {
+    font-size: 15px;
+    transform: translateY(-18px);
+    position: relative;
+}
+.soups .container.active {
+    height: 285px;
+}
+.veg_starters .container.active {
+    height: 350px;
+}
+.nv_starters .container.active {
+    height: 710px;
+}
+.tandoori_roti .container.active {
+    height: 420px;
+}
+.tandoori_starters .container.active {
+    height: 350px;
+}
+.fried_rice .container.active {
+    height: 320px;
+}
+.biryanis .container.active {
+    height: 420px;
+}
+.veg_curries .container.active {
+    height: 420px;
+}
+.nv_curries .container.active {
+    height: 450px;
+}
+.continental .container.active {
+    height: 320px;
+}
+.fast_food .container.active {
+    height: 385px;
+}
+.specials .container.active{
+    height: 550px;
+}
+.lassi_specials .container.active {
+    height: 225px;
+}
+.footer {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    align-items: center;
+}
+.footer .title {
+    font-size: 35px;
+    text-align: center;
+    position: relative;
+    color: #92140C;
+    margin-top: 25px;
+}
+.footer .nav {
+    width: 80vw;
+    margin: 25px 0;
+    padding: 10px 0;
+    border-top: 1px solid #efc337;
+    border-bottom: 1px solid #efc337;
+}
+.footer .nav li {
+    margin: 25px 0;
+}
+.media {
+    width: 225px;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: -75px;
+    left: 50%;
+    transform: translate(-50%);
+}
+.media i {
+    color: #efc337;
+}
+.end {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translate(-50%);
+}
+.end::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    background: #efc337;
+    position: absolute;
+    bottom: 0px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+}
+.dim {
+    background: rgba(0, 0, 0, .8);
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transition: .5s;
+    z-index: 3;
+}
