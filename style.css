@@ -349,7 +349,7 @@ section ul {
     cursor: pointer;
 }
 .cart .order:hover {
-    background: black;
+    transform: scale(1.1);
 }
 .cart .order h1 {
     font-size: 20px;
