@@ -307,9 +307,9 @@ section ul {
     transform: translate(-50%);
 }
 .media i {
-    /* color: #efc337; */
+    color: #efc337;
     position: relative;
-    left: 50%;
+    left: 0%;
 }
 .end {
     width: 100px;
