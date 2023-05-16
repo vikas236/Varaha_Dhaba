@@ -14,7 +14,6 @@
 }
 body {
     background-color: #0B1517;
-    /* background-color: #880B05; */
     color: #FFF8F0;
     font-family: 'Lato', sans-serif;
     position: relative;
@@ -308,7 +307,7 @@ section ul {
     transform: translate(-50%);
 }
 .media i {
-    color: #efc337;
+    /* color: #efc337; */
     position: relative;
     left: 0%;
 }
