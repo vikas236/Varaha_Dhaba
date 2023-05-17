@@ -151,7 +151,7 @@ section ul {
     width: 80%;
     margin-top: 0px;
     position: relative;
-    left: 8%;
+    left: 10%;
 }
 .main h2 {
     color: #efc337; 
@@ -321,7 +321,7 @@ section ul {
     position: fixed;
     bottom: 0px;
     border-radius: 25px 25px 0 0;
-    transform: translateY(300px);
+    transform: translateY(30%);
     z-index: 3;
     display: flex;
     flex-direction: column;
@@ -336,11 +336,21 @@ section ul {
     margin-top: 10px;
     font-size: 1.2em;
 }
-.cart li i {
-    margin-left: 100px;
-    margin-right: 10px;
+.cart li .minus {
+    margin-left: 20vw;
+}
+.cart li .plus {
+    margin-left: 5px;
+}
+.cart li .plus, .cart li .minus {
     transform: translateY(5px);
+    border-radius: 50%;
     cursor: pointer;
+}
+.cart .cart_item .count {
+    font-size: 18px;
+    margin-left: 5px;
+    margin-right: 2px;
 }
 .cart .order {
     width: 350px;
@@ -353,7 +363,7 @@ section ul {
     cursor: pointer;
 }
 .cart .order:hover {
-    transform: scale(1.1);
+    color: #efc337;
 }
 .cart .order h1 {
     font-size: 20px;

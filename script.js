@@ -5,8 +5,14 @@ const dim = document.querySelector('.dim');
 const section = document.querySelectorAll("h2");
 const title = document.querySelectorAll(".title");
 const link = document.querySelectorAll(".link");
-const add_to_cart = document.querySelectorAll('.bx-sm');
 const dish = document.querySelectorAll('.dish');
+const cart_item = document.querySelectorAll('.cart_item')
+const add = document.querySelectorAll('.add');
+const cart_list = document.querySelector('.cart_list')
+let item = "";
+let price = "";
+let list_item = "";
+
 
 // Functions
 const hello = function() {
@@ -28,9 +34,33 @@ const loop = function(arr, action) {
         arr[i].addEventListener('click', action);
     };
 };
-const added = function() {
-    this.childNodes[1].classList.toggle('bxs-plus-circle');
-    this.childNodes[1].classList.toggle('bxs-minus-circle');
+const added_show = function() {
+    if (this.childNodes[1].classList.contains('bxs-plus-circle')) {
+        this.childNodes[1].classList.remove('bxs-plus-circle');
+        this.childNodes[1].classList.add('bxs-minus-circle');
+        item = (this.innerText).substr(0, this.innerText.length-4);
+        price = this.childNodes[2].innerText;
+        cart_list.appendChild(document.createElement("li")).innerText = item;
+    }
+    else if (this.childNodes[1].classList.contains('bxs-minus-circle')){
+        this.childNodes[1].classList.remove('bxs-minus-circle');
+        this.childNodes[1].classList.add('bxs-plus-circle');
+        for (k=0; k<cart_list.childNodes.length; k++) {
+            list_item = (cart_list.childNodes[i].innerText).replace(/[^a-zA-Z\s]/g, "");
+            item = (this.innerText).substr(0, this.innerText.length-4);
+            item = item.split("");
+            item.pop();
+            if (item.join("") == list_item.trim()) {
+                cart_list.removeChild(cart_list.childNodes[k])
+            }
+        }
+    }
+};
+const cart_item_count = function() {
+    for (i=0; i<cart_item.length; i++) {
+        cart_item[i].childNodes[1].classList.add('bx', 'bx-sm', 'bxs-minus-circle');
+        cart_item[i].childNodes[4].classList.add('bx', 'bx-sm', 'bxs-plus-circle'); 
+    };
 };
 
 
@@ -40,4 +70,5 @@ loop(section, menu);
 dim.addEventListener('click', hello);
 loop(link, hello);
 assign(dish);
-loop(dish, added);
+loop(dish, added_show);
+cart_item_count();
