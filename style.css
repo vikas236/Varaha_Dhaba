@@ -316,41 +316,46 @@ section ul {
 .cart {
     width: 100vw;
     height: 30%;
-    background: #efc337;
+    background: #0B1517;
     display: block;
     position: fixed;
     bottom: 0px;
-    border-radius: 25px 25px 0 0;
-    transform: translateY(30%);
+    border-radius: 5% 5% 0 0;
+    transform: translateY(100%);
     z-index: 3;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     border-top: 1px solid #92140C;
+    transition: .6s;
 }
 .cart.active {
     transform: translateY(0px);
 }
-.cart li {
+.cart_list {
+    width: 100vw;
+    height: 20vh;
     margin-top: 10px;
+    overflow: scroll;
+    scrollbar-color: #FFF8F0;
+}
+.cart li {
+    margin-top: 5px;
+    margin-left: 10px;
     font-size: 1.2em;
+    width: 19em;
+    transition: .5s;
+    background: rgba(239, 195, 55, .9);
+    border-radius: 5px;
+    padding: 2px 0;
+    padding-left: 5px;
+    font-weight: 500;
 }
-.cart li .minus {
-    margin-left: 20vw;
-}
-.cart li .plus {
-    margin-left: 5px;
-}
-.cart li .plus, .cart li .minus {
-    transform: translateY(5px);
-    border-radius: 50%;
-    cursor: pointer;
-}
-.cart .cart_item .count {
-    font-size: 18px;
-    margin-left: 5px;
-    margin-right: 2px;
+.cart li span {
+    position: absolute;
+    right: 15px;
+    transition: .5s;
 }
 .cart .order {
     width: 350px;
@@ -360,6 +365,7 @@ section ul {
     border-radius: 10px;
     position: absolute;
     bottom: 5px;
+    left: 4.5vw;
     cursor: pointer;
 }
 .cart .order:hover {

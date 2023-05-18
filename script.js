@@ -2,16 +2,18 @@
 const ham = document.querySelector('.ham');
 const s_bar = document.querySelector('.s_bar');
 const dim = document.querySelector('.dim');
-const section = document.querySelectorAll("h2");
-const title = document.querySelectorAll(".title");
-const link = document.querySelectorAll(".link");
+const section = document.querySelectorAll('h2');
+const title = document.querySelectorAll('.title');
+const link = document.querySelectorAll('.link');
 const dish = document.querySelectorAll('.dish');
-const cart_item = document.querySelectorAll('.cart_item')
 const add = document.querySelectorAll('.add');
 const cart_list = document.querySelector('.cart_list')
+const cart = document.querySelector('.cart');
+let order = [];
 let item = "";
 let price = "";
 let list_item = "";
+let quantity = 1;
 
 
 // Functions
@@ -24,7 +26,7 @@ const hello = function() {
 const menu = function() {
     this.nextElementSibling.classList.toggle("active");
 };
-const assign = function(arr) {
+const assign_add_icons = function(arr) {
     for (i=0; i<arr.length; i++) {
         arr[i].childNodes[1].classList.add('bx', 'bx-sm', 'bxs-plus-circle');
     };
@@ -40,29 +42,25 @@ const added_show = function() {
         this.childNodes[1].classList.add('bxs-minus-circle');
         item = (this.innerText).substr(0, this.innerText.length-5);
         price = this.childNodes[2].innerText;
-        console.log(item);
-        cart_list.appendChild(document.createElement("li")).innerText = item;
-        
+        let htmlToAdd = `<li>${item}<span>${price}</span></li>`;
+        cart_list.innerHTML += htmlToAdd;
     }
     else if (this.childNodes[1].classList.contains('bxs-minus-circle')){
         this.childNodes[1].classList.remove('bxs-minus-circle');
         this.childNodes[1].classList.add('bxs-plus-circle');
-        for (k=0; k<cart_list.childNodes.length; k++) {
-            list_item = (cart_list.childNodes[i].innerText).replace(/[^a-zA-Z\s]/g, "");
-            item = (this.innerText).substr(0, this.innerText.length-4);
-            item = item.split("");
-            item.pop();
-            if (item.join("") == list_item.trim() || list_item) {
-                cart_list.removeChild(cart_list.childNodes[k]);
-            }
-        }
-    }
-};
-const cart_item_count = function() {
-    for (i=0; i<cart_item.length; i++) {
-        cart_item[i].childNodes[1].classList.add('bx', 'bx-sm', 'bxs-minus-circle');
-        cart_item[i].childNodes[4].classList.add('bx', 'bx-sm', 'bxs-plus-circle'); 
+        let cart_item = cart_list.childNodes;
+        item = (this.innerText).substr(0, this.innerText.length-5);
+        price = this.childNodes[2].innerText;
+        for (k=0; k<cart_item.length; k++) {
+            let cart_item_name = (cart_item[k].innerText).substr(0, cart_item[k].innerText.length-5);
+            if (cart_item_name==item) {
+                cart_list.removeChild(cart_item[k]);
+            };
+        };
     };
+    let cart_item = cart_list.childNodes;
+    if (cart_item.length>0 && !cart.classList.contains("active")) { cart.classList.add("active"); }
+    else if (cart_item.length<1 && cart.classList.contains("active")) { cart.classList.remove("active");}
 };
 
 
@@ -71,6 +69,5 @@ ham.addEventListener('click', hello);
 loop(section, menu);
 dim.addEventListener('click', hello);
 loop(link, hello);
-assign(dish);
+assign_add_icons(dish);
 loop(dish, added_show);
-cart_item_count();
