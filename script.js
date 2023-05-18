@@ -38,9 +38,11 @@ const added_show = function() {
     if (this.childNodes[1].classList.contains('bxs-plus-circle')) {
         this.childNodes[1].classList.remove('bxs-plus-circle');
         this.childNodes[1].classList.add('bxs-minus-circle');
-        item = (this.innerText).substr(0, this.innerText.length-4);
+        item = (this.innerText).substr(0, this.innerText.length-5);
         price = this.childNodes[2].innerText;
+        console.log(item);
         cart_list.appendChild(document.createElement("li")).innerText = item;
+        
     }
     else if (this.childNodes[1].classList.contains('bxs-minus-circle')){
         this.childNodes[1].classList.remove('bxs-minus-circle');
@@ -50,8 +52,8 @@ const added_show = function() {
             item = (this.innerText).substr(0, this.innerText.length-4);
             item = item.split("");
             item.pop();
-            if (item.join("") == list_item.trim()) {
-                cart_list.removeChild(cart_list.childNodes[k])
+            if (item.join("") == list_item.trim() || list_item) {
+                cart_list.removeChild(cart_list.childNodes[k]);
             }
         }
     }
