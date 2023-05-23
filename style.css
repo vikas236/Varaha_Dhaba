@@ -52,6 +52,15 @@ section ul {
     border-bottom: 1px solid #efc337;
 }
 
+.title {
+    cursor: pointer;
+}
+
+.title .v {
+    position: absolute;
+    left: 1%;
+}
+
 .title .v_shape {
     width: 55px;
     height: 60px;
@@ -90,6 +99,24 @@ section ul {
     top: 5px;
     right: 0px;
     border-radius: 0 50% 0 25%;
+}
+
+.logo_title {
+    font-family: 'Balthazar', serif;
+    color: #FFF8F0;
+    position: absolute;
+}
+
+.logo_title.one {
+    font-size: 40px;
+    left: 2.4em;
+    top: 10%;
+}
+
+.logo_title.two {
+    font-size: 30px;
+    left: 3.2em;
+    top: 50%;
 }
 
 .nav li {
