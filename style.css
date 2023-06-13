@@ -531,7 +531,6 @@ section ul {
     background: #0B1517;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     position: fixed;
     inset: 50%;
@@ -540,11 +539,12 @@ section ul {
     z-index: 5;
     transition: .3s;
     overflow: hidden;
+    padding-top: 25px;
 }
 
 .details.active {
-    width: 80%;
-    height: 35%;
+    width: 300px;
+    height: 200px;
     border: rgba(0, 0, 0, 1);
 }
 
@@ -565,30 +565,35 @@ section ul {
 }
 
 .details .ask_number {
-    margin: 0;
+    margin-top: 5px;
 }
 
 .details input {
-    width: 80%;
-    height: 12%;
-    margin-top: 5%;
+    width: 235px;
+    height: 35px;
+    margin-top: 25px;
     box-shadow: none;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     padding: 10px;
-    padding-top: 15px;
-    font-size: 17px;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
 .details input:focus {
     outline: none;
 }
 
+.details input.invalid {
+    outline: 3px solid red;
+}
+
 .details .place_order {
     font-size: 15px;
-    width: 300px;
-    padding: 5px;
-    margin-top: 35px;
+    width: 275px;
+    height: 50px;
+    margin-top: 30px;
+    padding-top: 5px;
 }
 
 .end {
