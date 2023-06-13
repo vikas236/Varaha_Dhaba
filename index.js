@@ -15,6 +15,7 @@ const order = document.querySelector('.order');
 const close_details = document.querySelector('.close_details');
 const place_order = document.querySelector(".place_order");
 const phone_number = document.querySelector(".phone_number");
+phone_number.value = "";
 const phoneRegex = /^\d{10}$/;
 let item = "";
 let price = "";
@@ -57,7 +58,7 @@ const added_show = function () {
         this.childNodes[1].classList.add('bxs-minus-circle');
         item = (this.innerText).substr(0, this.innerText.length - 5);
         price = this.childNodes[2].innerText;
-        let htmlToAdd = `<li>${item}<span>${price}</span></li>`;
+        let htmlToAdd = `<li>${item}<span><i class="decrement bx bx-sm bxs-minus-circle"></i>${price}<i class="decrement bx bx-sm bxs-plus-circle"></i></span></li>`;
         cart_list.innerHTML += htmlToAdd;
     }
     else if (this.childNodes[1].classList.contains('bxs-minus-circle')) {
@@ -110,14 +111,17 @@ place_order.addEventListener("click", function () {
         dish.push(list[i].innerText);
 
     }
-    let message = `*Phone Number: Order*\n`;
+    let message = `*Order*\n`;
     for (i = 0; i < dish.length; i++) {
         message += '\n';
         message += dish[i];
     }
     if (phoneRegex.test(phone_number.value)) {
+        message += `\n\n\\\* Phone Number: ${ phone_number.value } \\\*`;
         sendMessage(message);
         phone_number.classList.remove("invalid");
+        details_display();
+        empty_cart();
     }
     else { phone_number.classList.add("invalid"); };
 });
