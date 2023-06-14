@@ -171,7 +171,7 @@ place_order.addEventListener("click", function () {
 
 const sendMessage = (message) => {
     const botToken = '6048090191:AAEkCLxnXxEIIWoXnMW2E9KS5cV8AP79d6M';
-    const chatId = '-695825707';
+    const chatId = '-1001897909934';
     const parseMode = 'Markdown';
 
     fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
