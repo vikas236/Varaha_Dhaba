@@ -15,8 +15,6 @@ const order = document.querySelector('.order');
 const close_details = document.querySelector('.close_details');
 const place_order = document.querySelector(".place_order");
 const phone_number = document.querySelector(".phone_number");
-const increment = document.querySelector(".increment");
-const decrement = document.querySelector(".decrement");
 const final_list = document.querySelector(".final_list");
 const payment = document.querySelector(".payment");
 phone_number.value = "";
@@ -109,17 +107,47 @@ const order_now = function () {
     final_list.innerHTML = cart_list.innerHTML;
     let total_price = 0;
     for (let i = 0; i < (final_list.childNodes).length; i++) {
-        // (final_list.childNodes[i].innerHTML) = `<i class="increment bx bx-sm bxs-minus-circle"></i>` + (final_list.childNodes[i].innerHTML) + `<i class="decrement bx bx-sm bxs-plus-circle"></i>`;
+        (final_list.childNodes[i]).innerHTML += `<i class="decrement bx bx-sm bxs-minus-circle"></i>` + '<h5 class="item_quantity">quantity: 1</h5>' + `<i class="increment bx bx-sm bxs-plus-circle"></i>`;
         let price = ((final_list.childNodes[i]).childNodes[1]).innerHTML;
         price = parseInt(price.replace(/[^0-9]/g, ''));
         total_price += price;
-        console.log(price, total_price);
-    }
-    payment.innerHTML = `₹${total_price}/-`;
-}
+    };
+    update_price(total_price);
+    let quantity = 1;
+    const item_quantity = document.querySelectorAll(".item_quantity");
+    const increment = document.querySelectorAll(".increment");
+    const decrement = document.querySelectorAll(".decrement");
+    for (let i = 0; i < (final_list.childNodes).length; i++) {
+        let price = ((final_list.childNodes[i]).childNodes[1]).innerHTML;
+        price = parseInt(price.replace(/[^0-9]/g, ''));
+        increment[i].addEventListener("click", function() {
+            quantity = parseInt((item_quantity[i].innerHTML).substring(10, 11));
+            if (quantity < 5) {
+                quantity += 1;
+                item_quantity[i].innerHTML = `quantity: ${quantity}`;
+                total_price += price;
+                update_price(total_price); 
+            };
+        });
+        decrement[i].addEventListener("click", function() {
+            quantity = parseInt((item_quantity[i].innerHTML).substring(10, 11));
+            if (quantity > 0) {
+                quantity -= 1;
+                item_quantity[i].innerHTML = `quantity: ${quantity}`;
+                total_price -= price;
+                update_price(total_price);
+            };
+        });
+    };
+};
+
+
+const update_price = (cost) => {
+    payment.innerHTML = `₹${cost}/-`;
+};
 
 place_order.addEventListener("click", function () {
-    let list = cart_list.childNodes;
+    let list = final_list.childNodes;
     let dish = [];
     for (let i = 0; i < list.length; i++) {
         dish.push(list[i].innerText);
@@ -130,12 +158,14 @@ place_order.addEventListener("click", function () {
         message += dish[i];
     }
     if (phoneRegex.test(phone_number.value)) {
-        message += `\n\n\\\* Phone Number: ${phone_number.value} \\\*`;
-        sendMessage(message);
+        message += `\n\nTotal: ${payment.innerHTML}\n\\\* Phone Number: ${phone_number.value} \\\*`;
+        // sendMessage(message);
+        console.log(message);
         phone_number.classList.remove("invalid");
         details_display();
         empty_cart();
         phone_number.value = "";
+        alert("order placed");
     }
     else { phone_number.classList.add("invalid"); };
 });

@@ -551,7 +551,7 @@ section ul {
 }
 
 .details.active {
-    width: 325px;
+    width: 335px;
     height: 500px;
     border: rgba(0, 0, 0, 1);
 }
@@ -600,32 +600,42 @@ section ul {
 }
 
 .details .final_look {
-    width: 300px;
+    width: 315px;
     height: 275px;
     background: rgba(0, 0, 0, .5);
     border-radius: 10px;
     margin: 10px 0;
+    overflow-x: visible;
 }
 
 .details .final_list {
+    width: 310px;
     height: 225px;
+    overflow-x: visible;
     overflow-y: scroll;
 }
 
 .details .final_list li {
-    width: 280px;
+    width: 265px;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 25px;
+    font-size: 18px;
 }
 
 .details .final_list li .increment { 
     position: absolute;
-    left: -25px;
+    right: -20px;
+    top: 2px;
 }
 
 .details .final_list li .decrement { 
     position: absolute;
-    right: -25px;
+    left: -20px;
+}
+
+.details .final_list li .decrement:hover, .increment:hover {
+    transform: scale(1.05);
+    transition: .3s;
 }
 
 .details .final_look h1 {
