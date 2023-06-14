@@ -15,6 +15,10 @@ const order = document.querySelector('.order');
 const close_details = document.querySelector('.close_details');
 const place_order = document.querySelector(".place_order");
 const phone_number = document.querySelector(".phone_number");
+const increment = document.querySelector(".increment");
+const decrement = document.querySelector(".decrement");
+const final_list = document.querySelector(".final_list");
+const payment = document.querySelector(".payment");
 phone_number.value = "";
 const phoneRegex = /^\d{10}$/;
 let item = "";
@@ -58,7 +62,7 @@ const added_show = function () {
         this.childNodes[1].classList.add('bxs-minus-circle');
         item = (this.innerText).substr(0, this.innerText.length - 5);
         price = this.childNodes[2].innerText;
-        let htmlToAdd = `<li>${item}<span><i class="decrement bx bx-sm bxs-minus-circle"></i>${price}<i class="decrement bx bx-sm bxs-plus-circle"></i></span></li>`;
+        let htmlToAdd = `<li>${item}<span>${price}</span></li>`;
         cart_list.innerHTML += htmlToAdd;
     }
     else if (this.childNodes[1].classList.contains('bxs-minus-circle')) {
@@ -102,6 +106,16 @@ const order_now = function () {
     details.classList.add("active");
     if (details.classList.contains("active") || s_bar.classList.contains("active")) { dim.style.display = "block"; }
     else { dim.style.display = "none"; };
+    final_list.innerHTML = cart_list.innerHTML;
+    let total_price = 0;
+    for (let i = 0; i < (final_list.childNodes).length; i++) {
+        // (final_list.childNodes[i].innerHTML) = `<i class="increment bx bx-sm bxs-minus-circle"></i>` + (final_list.childNodes[i].innerHTML) + `<i class="decrement bx bx-sm bxs-plus-circle"></i>`;
+        let price = ((final_list.childNodes[i]).childNodes[1]).innerHTML;
+        price = parseInt(price.replace(/[^0-9]/g, ''));
+        total_price += price;
+        console.log(price, total_price);
+    }
+    payment.innerHTML = `₹${total_price}/-`;
 }
 
 place_order.addEventListener("click", function () {
@@ -109,7 +123,6 @@ place_order.addEventListener("click", function () {
     let dish = [];
     for (let i = 0; i < list.length; i++) {
         dish.push(list[i].innerText);
-
     }
     let message = `*Order*\n`;
     for (i = 0; i < dish.length; i++) {
@@ -117,11 +130,12 @@ place_order.addEventListener("click", function () {
         message += dish[i];
     }
     if (phoneRegex.test(phone_number.value)) {
-        message += `\n\n\\\* Phone Number: ${ phone_number.value } \\\*`;
+        message += `\n\n\\\* Phone Number: ${phone_number.value} \\\*`;
         sendMessage(message);
         phone_number.classList.remove("invalid");
         details_display();
         empty_cart();
+        phone_number.value = "";
     }
     else { phone_number.classList.add("invalid"); };
 });
