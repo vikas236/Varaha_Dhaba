@@ -159,8 +159,7 @@ place_order.addEventListener("click", function () {
     }
     if (phoneRegex.test(phone_number.value)) {
         message += `\n\nTotal: ${payment.innerHTML}\n\\\* Phone Number: ${phone_number.value} \\\*`;
-        // sendMessage(message);
-        console.log(message);
+        sendMessage(message);
         phone_number.classList.remove("invalid");
         details_display();
         empty_cart();
